@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>JavaScript Array</title>
+
+        <script>
+            var person = {
+                name:{
+                    first: 'Bob',
+                    last: 'Smith'
+                },
+                age: 32,
+                gender: 'male',
+                interest: ['music', 'hiking'],
+                bio: function() {
+                  alert(this.name[0] + ' ' + this.name[1] + ' is ' + this.age + ' years old. He likes ' + this.interest[0] + ' and ' + this.interest[1] + '.');
+                },
+                greeting: function(){
+                  alert('Hi! I\'m ' + this.name[0] + '.');
+                },
+        
+              };
+              
+              person['eyes'] = 'brown';
+              person.farewell = function () {
+                  alert('Bye Everybody!')
+              }
+
+          
+
+      
+
+
+
+        </script>
+    </head>
+
+    <body>
+
+
+
+
+    
+    </body>
+</html>

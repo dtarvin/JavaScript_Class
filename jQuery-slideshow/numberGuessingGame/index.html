@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Number Guessing Game</title>
+    <style>
+        .error {
+            text-align: center;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 30vw;
+            height: 20vh;
+            background-color: rgba(255, 255, 255, 0.8);
+            line-height: 20vh;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <input type="text" id="guess">
+    <br>
+    <button id="go" type="button">Guess</button>
+    <span id="guessCount"></span>
+    <br><br>
+    <span id="userGuess"></span>
+    <span id="result"></span>
+    <br><br><br>
+    Min: <input type="number" value="1" id="min">
+    Max: <input type="number" value="100" id="max">
+    <button id="reset">Reset</button>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js" integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
+    <script>
+        let computerNumber = parseInt(Math.random() * 100) + 1;
+        console.log(`Computer number is ${computerNumber}`);
+        var counter = 0;
+
+        $("#go").click(checkGuess);
+            
+        function checkGuess() {
+            console.log("checkGuess entered");
+            counter++;
+            var guess = parseInt($("#guess").val());
+            $("#userGuess").text(`Your guess is ${guess}.`);
+            $("#guessCount").text(`You've guessed ${counter} times.`);
+            if (guess == computerNumber) {
+                $("#result").text("You got it!");
+                $("#guessCount").text(`It took you ${counter} times to get it right.`);
+            } else if (computerNumber > guess) {
+                if (computerNumber - guess <= 5) {
+                    $("#result").text("You're so close!");
+                } else if (computerNumber - guess <= 10) {
+                    $("#result").text("A little higher");
+                } else {
+                    $("#result").text("Higher");
+                }
+            } else {
+                if (guess - computerNumber <= 5) {
+                    $("#result").text("You're so close!");
+                } else if (guess - computerNumber <= 10) {
+                    $("#result").text("A little lower");
+                } else {
+                    $("#result").text("Lower");
+                }
+            }
+        }
+        $("#guess").keypress(function(e) {
+            if(e.key == "Enter") {
+                checkGuess();
+                $("#guess").val('');
+            } else if (e.key > 9) {
+                e.preventDefault();
+                return false;
+            }
+        });
+
+        function reset() {
+            let min = parseInt($("#min").val());
+            let max = parseInt($("#max").val());
+            let diff = Math.abs(max-min);
+            counter = 0;
+            computerNumber = parseInt(Math.random() * (diff + 1)) + min;
+            console.log(`new number is ${computerNumber}`);
+            $("#result").val('');
+            $("#guessCount").val('');
+            $("userGuess").val('');
+        }
+
+        $("#reset").click(reset);
+        
+    </script>
+</body>
+</html>
+
+<!--
+    1. Have the computer think of a number between 1 & 100.
+    2. Have an input field & a submit button for users to guess what the number is.
+    3. Allow the user to keep guessing without changing what number the computer is thinking of.
+    4. Display a message if the user is right or wrong.
+    Bonus (optional)
+    1. Have a counter displaying how many times the user has guessed.
+    2. Allow the user to set the range they want to guess between (1-100 or 1-10 etc).
+    3. Give clues, such as you are close when guess is within 15 or very close when guess is within 5.
+    4. Have a button to reset/restart that has the computer think of a new number.
+-->

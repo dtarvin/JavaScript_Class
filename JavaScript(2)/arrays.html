@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>JavaScript Array</title>
+
+        <script>
+        //there are two different ways to declare and initialize arrays in JS
+            let array1= [];
+            let array2 = new Array();
+
+            let colors = ['orange', 'black', 'pink', 'coral'];
+
+            //accessing the value of the colors array by passing the arrayName into the alert methdod and calling the index   value
+            //alert(colors[0]);//orange;
+           // alert(colors[1]);
+            //alert(colors[2]);
+           //alert(colors[3]);
+
+            //to change the value of an array index
+            colors[2]= "blue";
+
+            //alert(colors[2]);
+
+            console.log('The length of the colors array is ' + colors.length);
+
+            let array= ['Orange', {age: 27}, false, function hello() {
+                console.log("this is pretty rad");
+            }
+            ];
+
+            console.log(array[1].age);
+            console.log(array[3]);
+
+            console.log('using the pop(); method on our colors array, it will remove the ' + colors.pop() + ' color');
+
+            console.log(colors);
+
+            colors.push('green');
+
+            console.log(colors);
+
+            colors.shift();
+            console.log(colors);
+
+            colors.unshift('yellow');
+            console.log(colors);
+
+            let colorHolder = colors;
+
+            console.log(colorHolder);
+
+            for(var i = 0; i < colorHolder.length; i++){
+                console.log(colorHolder[i]);
+            }
+
+            for(let color of colors){
+                console.log(colors);
+            }
+
+            for(let key in colors){
+                console.log(colors[key]);
+            }
+
+           
+            
+
+
+
+
+        </script>
+    </head>
+
+    <body>
+
+
+
+
+    
+    </body>
+</html>

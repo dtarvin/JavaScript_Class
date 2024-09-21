@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Intro</title>
+    <script
+  src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+  integrity="sha256-4+XzXVhsDmqanXGHaHvgh1gMQKX40OUvDEBTu8JcmNs="
+  crossorigin="anonymous"></script>
+    <script>
+        $(function() {
+            var total = 0;
+            console.log("At start, total = " + total);
+            total = total + 2;
+            total += 3;
+            total++;
+            console.log("At end, total is " + total);
+            var firstName = "David";
+            var lastName = "Tarvin";
+            console.log(firstName + " " + lastName);
+
+            function addThreeAndFive() {
+                var sum = 3 + 5;
+                console.log("Three plus five equals " + sum);
+            }
+
+            addThreeAndFive();
+
+            function addTwoNumbers(num1, num2) {
+                var sumOfTwo = num1 + num2;
+                console.log("The sum of " + num1 + " and " + num2 + " is " + sumOfTwo);
+                return sumOfTwo;
+            }
+
+            addTwoNumbers(8, 4);
+            addTwoNumbers(12, 5);
+
+            $("div").append("<p>This is a paragraph</p>");
+
+            function countToTop(value) {
+                for (var i = 1; i <= value; i++) {
+                    console.log("i is now " + i);
+                }
+                console.log("i has now stopped. i = " + i);
+            }
+
+            countToTop(5);
+
+            function factorial(value) {
+                var total = 1;
+                for (var i = 2; i <= value; i++) {
+                    total = total * i;
+                }
+                return total;
+            }
+            console.log(factorial(5));
+
+            console.log("global total = " + total);
+        });
+    </script>
+    <style>
+        div {
+            border: 1px solid red;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        This is the div
+    </div>
+</body>
+</html>

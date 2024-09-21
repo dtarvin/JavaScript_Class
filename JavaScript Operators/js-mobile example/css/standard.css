@@ -1,0 +1,171 @@
+ #nav {
+     width: 100%;
+     margin: 0 auto;
+     background: black;
+ }
+ 
+ .wrapper {
+     width: 100%;
+     max-width: 960px;
+     margin: 0 auto;
+ }
+ 
+ .logo {
+     color: white;
+ }
+ 
+ nav {
+     margin: 0;
+     padding: 0;
+ }
+ 
+ nav ul {
+     display: flex;
+     flex-direction: column;
+     list-style-type: none;
+     padding: 0;
+     margin: 0;
+     display: none;
+ }
+ 
+ nav ul.opening {
+     display: block;
+     height: 30px;
+ }
+ 
+ nav li {
+     border-bottom: 1px solid white;
+ }
+ 
+ nav li:last-child {
+     border-bottom: none;
+ }
+ 
+ nav a {
+     color: #ebebd3;
+     background: #333;
+     display: block;
+     padding: 1.5em 4em 1.5em 1em;
+     text-transform: uppercase;
+     text-decoration: none;
+ }
+ 
+ nav a:hover,
+ nav a:focus {
+     background: #111;
+ }
+ 
+ .menu-toggle {
+     position: absolute;
+     padding: 0.8em;
+     top: 1em;
+     right: .5em;
+     cursor: pointer;
+ }
+ 
+ .hamburger,
+ .hamburger::before,
+ .hamburger::after {
+     content: '';
+     display: block;
+     background: #ebebd3;
+     height: 3px;
+     width: 2em;
+     border-radius: 3px;
+     -webkit-transition: all ease-in-out 350ms;
+     transition: all ease-in-out 350ms;
+ }
+ 
+ .hamburger::before {
+     -webkit-transform: translateY(-7px);
+     transform: translateY(-7px);
+ }
+ 
+ .hamburger::after {
+     -webkit-transform: translateY(4px);
+     transform: translateY(4px);
+ }
+ 
+ .open .hamburger {
+     -webkit-transform: rotate(45deg);
+     transform: rotate(45deg);
+ }
+ 
+ .open .hamburger::before {
+     display: none;
+ }
+ 
+ .open .hamburger::after {
+     -webkit-transform: translateY(-1px) rotate(-90deg);
+     transform: translateY(-1px) rotate(-90deg);
+ }
+ 
+ #home {
+     margin-top: 2em;
+ }
+ 
+ .photobox {
+     display: flex;
+     margin-left: 5vh;
+     margin-right: 5vh;
+ }
+ 
+ .photobox img {
+     width: 50vw;
+ }
+ 
+ figcaption {
+     text-align: center;
+     font-size: 0.9em;
+ }
+ 
+ .text {
+     width: 35vw;
+     margin-left: 40px;
+ }
+ /*desktop view: below anything less then this will be desktop view*/
+ /* .menu-toggle: we dont want to see the mobile view */
+ 
+ @media (min-width: 780px) {
+     .menu-toggle {
+         display: none;
+     }
+     nav ul {
+         display: flex;
+         flex-direction: row;
+         justify-content: flex-end;
+     }
+     nav li {
+         flex: 1 1 auto;
+         border: none;
+     }
+     nav li a {
+         padding: 1.5em 1.3em 1.5em 1.3em;
+         margin: 0;
+         border: none;
+         background-color: black;
+     }
+     nav a:hover,
+     nav a:focus {
+         background-color: rgba(255, 255, 255, .10);
+     }
+     nav {
+         display: flex;
+         flex-direction: row;
+         justify-content: space-between;
+         text-align: center;
+         background-color: black;
+         color: white;
+     }
+     .photobox {
+         flex-direction: column;
+     }
+     .photobox img {
+         width: 65vw;
+     }
+     .text {
+         font-weight: bold;
+         font-size: medium;
+         width: 100%;
+     }
+ }

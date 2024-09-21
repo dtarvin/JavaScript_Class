@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>First JavaScript</title>
+</head>
+<body>
+    <h1>First JavaScript</h1>
+    <script>
+        var total = 0;
+        total = total + 2;
+        total += 3;
+        total++;
+        console.log("Total is " + total);
+
+        var housePrice = "400000";
+        /* 1. if statement with no other parts
+        /* if (something is true) {
+            take this action
+        } */
+        /* if condition is not true, nothing happens */
+        if (housePrice < 300000) {
+            console.log("We can afford this house!");
+        }
+
+        /* 2. if-else statement
+              if (something is true) {
+                  take this action
+              } else {
+                  take this other action
+              } */
+        var weather = "sunny";
+        if (weather == "rainy") {
+            console.log("take an umbrella");
+        } else {
+            console.log("You don't need an umbrella today!");
+        }
+
+        /* 3. if-else-if statements
+              if (something is true) {
+                  take an action
+              } else if (something else is true) {
+                  take a different action
+              } */
+        var grade = 73;
+        if (grade >= 90) {
+            console.log("You got an A!");
+        } else if (grade >= 80) {
+            console.log("You got a B");
+        } else if (grade >= 70) {
+            console.log("You got a C");
+        } else if (grade >= 60) {
+            console.log("You got a D");
+        } else {
+            console.log("Sorry, you got an F");
+        }
+
+        var carrot = "^";
+        console.log(carrot);
+        for (var i = 0; i < 10; i++) {
+            carrot += "^";  /* carrot = carrot + "^"; */
+            console.log(carrot);
+        }
+
+        for (var i = 2; i <= 20; i+=2) {
+            console.log("i is " + i);
+        }
+
+        for (var i = 19; i >= 0; i--) {
+            console.log("i is " + i);
+        }
+
+        /* while loop where number of iterations
+         * is uncertain */
+        let num = 0;
+        while (num != 12) {
+            num = prompt("Enter a number");
+        }
+        alert("You got it!");
+
+        var k = 0;
+        while (k <= 20) {
+            console.log("k is " + k);
+            k += 3;
+        }
+
+        /* for loop with break statement */
+        for (i=1; i <= 20; i++) {
+            if (i % 4 == 0) {
+                break;
+            } else {
+                console.log(i);
+            }
+        }
+
+        /* for loop with continue statement */
+        for (i=1; i <= 20; i++) {
+            if (i % 4 == 0) {
+                continue;
+            } else {
+                console.log(i);
+            }
+        }
+
+        console.log("while loop with m started");
+        var m = 30;
+        while (m <= 20) {
+            console.log("m is " + m);
+            m += 3;
+        }
+        console.log("while loop with m ended");
+
+        console.log("do-while loop with n started");
+        var n = 30;
+        do {
+            console.log("n is " + n);
+        } while (n <= 20);
+        console.log("do-while loop with n ended");
+
+        function addTwoNumbers() {
+            console.log("2 plus 3 equals" + (2+3));
+        }
+
+        addTwoNumbers();
+
+        function multiplyTwoNumbers(num1, num2) {  /* num1 & num2 are parameters */
+            console.log("The product is " + (num1 * num2));
+        }
+
+        multiplyTwoNumbers(5, 6); /* num1 = 5, num2 = 6, these are arguments */
+
+        multiplyTwoNumbers(2, 9);
+
+        var x = 2;
+
+        function increaseXByFour() {
+            var x = 1;
+            x = x + 4;
+            console.log(x);
+        }
+
+        console.log(x);
+        increaseXByFour();
+        console.log(x);
+
+        var y = 2;
+
+        function increaseYByFour() {
+            y = 1;
+            y = y + 4;
+            console.log(y);
+        }
+
+        console.log(y);
+        increaseYByFour();
+        console.log(y);
+    </script>
+</body>
+</html>

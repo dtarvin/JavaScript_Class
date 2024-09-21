@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fetch API Example</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@600&family=Nanum+Myeongjo&family=Poppins:wght@500&display=swap" rel="stylesheet">
+    <style>
+        .term {
+            color: blue;
+            font-weight: bold;
+        }
+        body {
+            background-image: url(./images/5570863.jpg);
+            background-size: cover;
+            background-repeat: no-repeat;
+            width: 100%;
+            height: 100%;
+            font-family: Poppins, sans-serif;
+        }
+        header {
+            text-align: center;
+        }
+        dl {
+            width: 80%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        /* dt {
+            animation: in-from-right .5s linear;
+            position: relative;
+        }
+        dd {
+            animation: in-from-right .5s linear;
+            animation-delay: .5s;
+            position: relative;
+        }
+        @keyframes in-from-right {
+            0% {
+                left: 100vw;
+                opacity: 0;
+            }
+            100% {
+                left: 10vw;
+                opacity: 1;
+            }
+        } */
+    </style>
+</head>
+<body>
+    <div>
+        <header>
+            <h1>Word Definitions</h1>
+            <p>Enter a word and I will give you its definition.</p>
+            <input type="text" id="word" name="word" placeholder="word to define">
+            <button type="submit" id="submit">Submit</button>
+        </header>
+        <dl></dl>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script>
+        const DICTIONARY_URL = 'https://api.dictionaryapi.dev/api/v2/entries/en/';
+        const definitionList = document.querySelector("dl");
+
+        $("#submit").click(function() {
+            let wordToDefine = $("#word").val();
+            let textToAdd = '';
+            fetch(DICTIONARY_URL + wordToDefine)
+            .then((response) => {
+                if (!response.ok) {
+                    throw new Error(`HTTP error, status = ${response.status}`);
+                }
+                return response.json();
+            })
+            .then((data) => {
+                console.log(data);
+                $("dt,dd").remove();
+                data[0].meanings.forEach((x) => {
+                    let htmlSegment = `<dt><span class="term">${wordToDefine}</span> (${x.partOfSpeech}).</dt>`;
+                    // htmlSegment += `<p>${wordToDefine} has the following definitions:</p>`;
+                    x.definitions.forEach((y) => {
+                        htmlSegment += `<dd>${y.definition}</dd>`;
+                    })
+                    textToAdd += htmlSegment;
+                });
+                $(definitionList).append(textToAdd);
+            })
+            .catch((error) => {
+                const p = document.createElement("p");
+                p.appendChild(document.createTextNode(`Error: ${error.message}`));
+                document.body.insertBefore(p, myList);
+            });
+        });
+
+    </script>
+</body>
+</html>
